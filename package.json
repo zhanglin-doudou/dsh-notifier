@@ -1,0 +1,71 @@
+{
+  "name": "dsh-notifier",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Notification sounds for DeepSeek Harness: a different tone when a task finishes, when it stops early, and when the agent needs your input, with a settings page to switch sounds on and pick them.",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./lib/client.js",
+    "./tones": "./src/tones.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "src",
+    "lib",
+    "assets",
+    "icon.svg",
+    "locale",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "notification",
+    "sound"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/schemastery": "^3.18.4"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "icon": "./icon.svg",
+  "devDependencies": {
+    "@deepseek-ai/schemastery": "3.18.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "scripts": {
+    "test": "node --test tests/unit.test.js tests/host.test.js tests/client.test.js",
+    "test:unit": "node --test tests/unit.test.js",
+    "test:host": "node --test tests/host.test.js",
+    "test:client": "node --test tests/client.test.js",
+    "sounds": "node scripts/generate-sounds.mjs"
+  }
+}

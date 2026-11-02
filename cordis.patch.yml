@@ -1,0 +1,18 @@
+# dsh-notifier bundle patch: one Host entry plus the browser half it implies.
+#
+# The browser half is attached to the Loader row whose specifier is the bare
+# package name `dsh-notifier` — the client module system pairs a package's
+# `dsh.client` declaration with that row, so the `name` here must stay the bare
+# package name (a subpath row would never carry the half).
+#
+# The entry id `notifier` is the settings namespace the page addresses through
+# `ctx.configForms.get('notifier')`, so the id must match the page's ENTRY_ID.
+- insert:
+    - id: notifier
+      name: 'dsh-notifier'
+      config:
+        enabled: true
+        completeTone: task-complete
+        interruptedTone: task-interrupted
+        needsInputTone: needs-input
+        volume: 0.6

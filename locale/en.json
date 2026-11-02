@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Notification sounds",
+    "description": "Play a different tone when a task finishes, when a task stops early, and when the agent needs your input, with settings to switch sounds on and pick them."
+  }
+}
